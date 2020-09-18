@@ -16,7 +16,7 @@
     */
     createPhrases(){
         const phrase1 = new Phrase('Hi there');
-        const phrase2 = new Phrase('javacsript');
+        const phrase2 = new Phrase('javascript');
         const phrase3 = new Phrase('I Love you');
         const phrase4 = new Phrase('How are you');
         const phrase5 = new Phrase('Austin Texas');
@@ -46,5 +46,53 @@
         overlay.style.display = 'none';
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
+    };
+
+
+    /**
+     * Checks for winning move
+     * @return {boolean} True if game has been won, false if game wasn't
+    won */
+    checkForWin(){
+        const hidden = document.querySelectorAll('.hide');
+        console.log(hidden);
+        if(hidden.length === 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    /**
+     * Increases the value of the missed property
+     * Removes a life from the scoreboard
+     * Checks if player has remaining lives and ends game if player is out
+     */
+    removeLife(){
+        if (this.missed < 5){
+            document.querySelectorAll('.tries')[this.missed].firstElementChild.src = 'images/lostHeart.png';
+            this.missed++;
+        } else {
+            this.gameOver();
+        }
+    };
+
+
+    /**
+    * Displays game over message
+    * @param {boolean} gameWon - Whether or not the user won the game 
+    */
+    gameOver(gameWon){
+        const overlay = document.getElementById('overlay');
+        overlay.style.display = 'block';
+        const h1 = document.getElementById('game-over-message');
+        if(gameWon){
+            h1.textContent = 'Congratulations!';
+            overlay.className = 'win';
+        } else {
+            h1.textContent = 'Try again';
+            overlay.className = 'lose';
+        }
     };
  }

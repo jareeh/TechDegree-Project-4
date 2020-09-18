@@ -13,7 +13,6 @@
      addPhraseToDisplay(){
         const ul = document.querySelector('#phrase ul')
         phrase = game.activePhrase;
-        console.log(phrase.phrase)
 
         for (let i = 0; i < phrase.phrase.length; i++){
             const li = document.createElement('li');
@@ -29,7 +28,27 @@
         }
     };
 
-    //  checkLetter();
+    /**
+    * Checks if passed letter is in phrase
+    * @param (string) letter - Letter to check */
+    checkLetter(letter){
+        if(game.activePhrase.phrase.includes(letter)){
+            return true;
+        } else {
+            return false;
+        }
+    };
 
-    //  showMatchedLetter();
+    /**
+    * Displays passed letter on screen after a match is found * @param (string) letter - Letter to display
+    */
+    showMatchedLetter(letter){
+        const li = document.querySelectorAll(`.hide.letter.${letter}`);
+        console.log(li)
+        for (let i = 0; i < li.length; i++){
+            if(this.checkLetter(letter)){
+            li[i].className = `show letter ${letter}`
+            }
+        }
+    };
  } 
