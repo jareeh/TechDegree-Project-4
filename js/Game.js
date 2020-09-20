@@ -55,13 +55,12 @@
     won */
     checkForWin(){
         const hidden = document.querySelectorAll('.hide');
-        console.log(hidden);
         if(hidden.length === 0){
             return true;
         } else {
             return false;
         }
-    }
+    };
 
 
     /**
@@ -70,7 +69,7 @@
      * Checks if player has remaining lives and ends game if player is out
      */
     removeLife(){
-        if (this.missed < 5){
+        if (this.missed < 4){
             document.querySelectorAll('.tries')[this.missed].firstElementChild.src = 'images/lostHeart.png';
             this.missed++;
         } else {
@@ -95,4 +94,31 @@
             overlay.className = 'lose';
         }
     };
+
+    /**
+    * Handles onscreen keyboard button clicks
+    * @param (HTMLButtonElement) button - The clicked button element */
+    handleInteraction(button){
+        console.log(button);
+        
+        button.disabled = true;
+        //if phrase doesn't contain e.target.textcontent
+        if(!this.activePhrase.phrase.includes(button.textContent)){
+            this.removeLife();
+            button.classList.add('wrong');
+        } else if (this.activePhrase.phrase.includes(button.textContent)){
+            button.classList.add('chosen');
+            this.activePhrase.showMatchedLetter(button.textContent);
+            if(this.checkForWin()){
+                this.gameOver(true)
+            }
+        }
+            //call removeLife();
+        //else if phrase does include e.target.textcontent
+            //add 'chosen' class to button
+            //call showMatchedLetter()
+            //if call checkForWin = true
+                //call gameOver
+    };
+
  }

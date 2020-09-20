@@ -8,3 +8,10 @@ startButton.addEventListener('click', () => {
     game = new Game();
     game.startGame();
 })
+
+const keyboard = document.getElementById('qwerty');
+keyboard.addEventListener('click', (e) => {
+    if (e.target.className === 'key'){
+        game.handleInteraction(e.target);
+    }
+})

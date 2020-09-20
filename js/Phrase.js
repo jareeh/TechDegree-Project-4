@@ -44,7 +44,6 @@
     */
     showMatchedLetter(letter){
         const li = document.querySelectorAll(`.hide.letter.${letter}`);
-        console.log(li)
         for (let i = 0; i < li.length; i++){
             if(this.checkLetter(letter)){
             li[i].className = `show letter ${letter}`
