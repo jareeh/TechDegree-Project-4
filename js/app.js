@@ -16,3 +16,13 @@ keyboard.addEventListener('click', (e) => {
         game.handleInteraction(e.target);
     }
 })
+
+document.addEventListener('keydown', (e) => {
+    const buttons = document.querySelectorAll('.key');
+    for (let i = 0; i < buttons.length; i++){
+        if(buttons[i].textContent === e.key){
+            game.handleInteraction(buttons[i]);
+        }
+    }
+
+})
