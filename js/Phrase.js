@@ -11,7 +11,7 @@
      * Display phrase on game board
      */
      addPhraseToDisplay(){
-        const ul = document.querySelector('#phrase ul')
+        const ul = document.querySelector('#phrase ul');
         phrase = game.activePhrase;
 
         for (let i = 0; i < phrase.phrase.length; i++){

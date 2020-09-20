@@ -42,12 +42,40 @@
      * Begins game by selecting a random phrase and displaying it to user
      */
     startGame() {
+        //Phase 1
         const overlay = document.getElementById('overlay')
         overlay.style.display = 'none';
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
     };
 
+    newGame(){
+        //Phase 2
+        //remove all li elements from ul
+        const ul = document.querySelector('#phrase ul');
+        const list = document.querySelectorAll('#phrase ul li');
+        if(list){
+            for (let i = 0; i < list.length; i++){
+                ul.removeChild(list[i]);
+            }
+        }
+
+        //enable all onscreen keyboard buttons
+        const keys = document.querySelectorAll('.key')
+        for (let i = 0; i < keys.length; i++){
+            keys[i].disabled = false;
+        }
+
+        //update button classes to only 'key'
+        for (let i = 0; i < keys.length; i++){
+            keys[i].className = 'key';
+        }
+        //reset heart images
+        const hearts = document.querySelectorAll('.tries');
+        for (let i = 0; i < hearts.length; i++){
+            hearts[i].children[0].src = 'images/liveHeart.png';
+        }
+    };
 
     /**
      * Checks for winning move
@@ -98,11 +126,8 @@
     /**
     * Handles onscreen keyboard button clicks
     * @param (HTMLButtonElement) button - The clicked button element */
-    handleInteraction(button){
-        console.log(button);
-        
+    handleInteraction(button){        
         button.disabled = true;
-        //if phrase doesn't contain e.target.textcontent
         if(!this.activePhrase.phrase.includes(button.textContent)){
             this.removeLife();
             button.classList.add('wrong');
@@ -113,12 +138,6 @@
                 this.gameOver(true)
             }
         }
-            //call removeLife();
-        //else if phrase does include e.target.textcontent
-            //add 'chosen' class to button
-            //call showMatchedLetter()
-            //if call checkForWin = true
-                //call gameOver
     };
 
  }
