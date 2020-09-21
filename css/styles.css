@@ -1,5 +1,6 @@
 /* Main styles */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
 
 /* Variables */
 
@@ -20,7 +21,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Courier Prime', monospace;
 }
 
 body {
@@ -40,6 +41,8 @@ h2 {
   text-transform: uppercase;
   font-size: var(--font-size-large);
   margin: 60px;
+  letter-spacing: 3px;
+  font-weight: normal;
 }
 
 h1 {
@@ -112,7 +115,7 @@ button {
 
 .show {
   color: #fff;
-  background-color: #4ac0d5;
+  background-color: #73b5d1;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -178,6 +181,7 @@ button {
 
 .title {
   color: #FFF;
+  font-weight: bold;
 }
 
 .start {

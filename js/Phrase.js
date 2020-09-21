@@ -30,7 +30,8 @@
 
     /**
     * Checks if passed letter is in phrase
-    * @param (string) letter - Letter to check */
+    * @param (string) letter - Letter to check 
+    */
     checkLetter(letter){
         if(game.activePhrase.phrase.includes(letter)){
             return true;

@@ -15,9 +15,9 @@
     * @return {array} An array of phrases that could be used in the game
     */
     createPhrases(){
-        const phrase1 = new Phrase('Hi there');
-        const phrase2 = new Phrase('javascript');
-        const phrase3 = new Phrase('I Love you');
+        const phrase1 = new Phrase('Howdy there');
+        const phrase2 = new Phrase('Javascript rules');
+        const phrase3 = new Phrase('Anyone can code');
         const phrase4 = new Phrase('How are you');
         const phrase5 = new Phrase('Austin Texas');
         return [phrase1,
@@ -79,8 +79,8 @@
 
     /**
      * Checks for winning move
-     * @return {boolean} True if game has been won, false if game wasn't
-    won */
+     * @return {boolean} True if game has been won, false if game wasn't won 
+     */
     checkForWin(){
         const hidden = document.querySelectorAll('.hide');
         if(hidden.length === 0){
@@ -89,7 +89,6 @@
             return false;
         }
     };
-
 
     /**
      * Increases the value of the missed property
@@ -128,7 +127,8 @@
     * @param (HTMLButtonElement) button - The clicked button element */
     handleInteraction(button){        
         button.disabled = true;
-        if(!this.activePhrase.phrase.includes(button.textContent)){
+        
+        if(!this.activePhrase.phrase.includes(button.textContent) && !button.classList.contains('wrong')){
             this.removeLife();
             button.classList.add('wrong');
         } else if (this.activePhrase.phrase.includes(button.textContent)){
